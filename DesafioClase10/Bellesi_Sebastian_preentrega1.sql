@@ -4,7 +4,7 @@ USE coder_banco_34945;
 
 -- Creación Tablas
 CREATE TABLE sucursales (
-	id_sucursal INT NOT NULL AUTO_INCREMENT,
+    id_sucursal INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
     direccion VARCHAR(250) NULL,
     codigo_postal VARCHAR(8) NULL,
@@ -12,13 +12,13 @@ CREATE TABLE sucursales (
 );
 
 CREATE TABLE estados (
-	id_estado INT NOT NULL AUTO_INCREMENT,
+    id_estado INT NOT NULL AUTO_INCREMENT,
     descripcion VARCHAR(50) NOT NULL,
     PRIMARY KEY (id_estado)
 );
 
 CREATE TABLE clientes (
-	id_cliente INT NOT NULL AUTO_INCREMENT,
+    id_cliente INT NOT NULL AUTO_INCREMENT,
     nro_documento INT NOT NULL,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
@@ -28,13 +28,13 @@ CREATE TABLE clientes (
 );
 
 CREATE TABLE operatorias (
-	id_operatoria INT NOT NULL AUTO_INCREMENT,
+    id_operatoria INT NOT NULL AUTO_INCREMENT,
     descripcion VARCHAR(50) NOT NULL,
     PRIMARY KEY (id_operatoria)
 );
 
 CREATE TABLE lineas (
-	id_linea INT NOT NULL AUTO_INCREMENT,
+    id_linea INT NOT NULL AUTO_INCREMENT,
     id_operatoria INT NOT NULL,
     descripcion VARCHAR(50) NOT NULL,
     fecha_vigencia_desde DATETIME NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE lineas (
 );
 
 CREATE TABLE servicios (
-	id_servicio BIGINT NOT NULL AUTO_INCREMENT,
+    id_servicio BIGINT NOT NULL AUTO_INCREMENT,
     id_cliente INT NOT NULL,
     id_sucursal INT NOT NULL,
     id_operatoria INT NOT NULL,
@@ -62,14 +62,14 @@ CREATE TABLE servicios (
 );
 
 CREATE TABLE monedas (
-	id_moneda SMALLINT NOT NULL AUTO_INCREMENT,
+    id_moneda SMALLINT NOT NULL AUTO_INCREMENT,
     descripcion VARCHAR(50) NOT NULL,
     descripcion_reducida VARCHAR(3) NOT NULL,
     PRIMARY KEY (id_moneda)
 );
 
 CREATE TABLE transacciones (
-	id_transaccion BIGINT NOT NULL AUTO_INCREMENT,
+    id_transaccion BIGINT NOT NULL AUTO_INCREMENT,
     id_servicio BIGINT NOT NULL,
     fecha DATETIME NOT NULL,
     importe DECIMAL(13,2) NOT NULL,
