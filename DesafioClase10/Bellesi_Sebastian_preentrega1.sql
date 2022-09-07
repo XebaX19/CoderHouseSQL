@@ -1,9 +1,9 @@
 -- Creación de Base de Datos
-CREATE DATABASE coder_banco_34945;
+CREATE DATABASE IF NOT EXISTS coder_banco_34945;
 USE coder_banco_34945;
 
--- Creación Tablas
-CREATE TABLE sucursales (
+-- Creación Tabla: Sucursales
+CREATE TABLE IF NOT EXISTS sucursales (
     id_sucursal INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
     direccion VARCHAR(250) NULL,
@@ -11,13 +11,15 @@ CREATE TABLE sucursales (
     PRIMARY KEY (id_sucursal)
 );
 
-CREATE TABLE estados (
+-- Creación Tabla: Estados
+CREATE TABLE IF NOT EXISTS estados (
     id_estado INT NOT NULL AUTO_INCREMENT,
     descripcion VARCHAR(50) NOT NULL,
     PRIMARY KEY (id_estado)
 );
 
-CREATE TABLE clientes (
+-- Creación Tabla: Clientes
+CREATE TABLE IF NOT EXISTS clientes (
     id_cliente INT NOT NULL AUTO_INCREMENT,
     nro_documento INT NOT NULL,
     nombre VARCHAR(50) NOT NULL,
@@ -27,13 +29,15 @@ CREATE TABLE clientes (
     PRIMARY KEY (id_cliente)
 );
 
-CREATE TABLE operatorias (
+-- Creación Tabla: Operatorias
+CREATE TABLE IF NOT EXISTS operatorias (
     id_operatoria INT NOT NULL AUTO_INCREMENT,
     descripcion VARCHAR(50) NOT NULL,
     PRIMARY KEY (id_operatoria)
 );
 
-CREATE TABLE lineas (
+-- Creación Tabla: Lineas
+CREATE TABLE IF NOT EXISTS lineas (
     id_linea INT NOT NULL AUTO_INCREMENT,
     id_operatoria INT NOT NULL,
     descripcion VARCHAR(50) NOT NULL,
@@ -43,7 +47,8 @@ CREATE TABLE lineas (
     CONSTRAINT FK_lineas_operatorias FOREIGN KEY (id_operatoria) REFERENCES operatorias (id_operatoria)
 );
 
-CREATE TABLE servicios (
+-- Creación Tabla: Servicios
+CREATE TABLE IF NOT EXISTS servicios (
     id_servicio BIGINT NOT NULL AUTO_INCREMENT,
     id_cliente INT NOT NULL,
     id_sucursal INT NOT NULL,
@@ -61,14 +66,16 @@ CREATE TABLE servicios (
     CONSTRAINT FK_servicios_estados FOREIGN KEY (id_estado) REFERENCES estados (id_estado)
 );
 
-CREATE TABLE monedas (
+-- Creación Tabla: Monedas
+CREATE TABLE IF NOT EXISTS monedas (
     id_moneda SMALLINT NOT NULL AUTO_INCREMENT,
     descripcion VARCHAR(50) NOT NULL,
     descripcion_reducida VARCHAR(3) NOT NULL,
     PRIMARY KEY (id_moneda)
 );
 
-CREATE TABLE transacciones (
+-- Creación Tabla: Transacciones
+CREATE TABLE IF NOT EXISTS transacciones (
     id_transaccion BIGINT NOT NULL AUTO_INCREMENT,
     id_servicio BIGINT NOT NULL,
     fecha DATETIME NOT NULL,
