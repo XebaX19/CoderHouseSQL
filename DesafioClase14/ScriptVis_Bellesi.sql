@@ -2,7 +2,7 @@
 	Vista que muestra los servicios del Banco asociados a Cuentas a la Vista que se encuentren 
     en estado activo recuperando además información de los clientes y descripción del tipo de cuenta.
 */
-CREATE VIEW `view_cuentas_activas` AS
+CREATE OR REPLACE VIEW `view_cuentas_activas` AS
     SELECT 	s.id_servicio, 
 			l.descripcion AS tipo_cuenta, 
             s.fecha_solicitud, 
@@ -25,7 +25,7 @@ CREATE VIEW `view_cuentas_activas` AS
 	Vista que muestra la cantidad de servicios que posee el Banco agrupados por sucursal, 
     mostrando los datos de cada sucursal.
 */          
-CREATE VIEW `view_servicios_x_sucursal` AS
+CREATE OR REPLACE VIEW `view_servicios_x_sucursal` AS
 	SELECT su.id_sucursal,
 		   su.nombre AS nombre_sucursal,
 		   su.direccion AS direccion_sucursal,
@@ -40,7 +40,7 @@ CREATE VIEW `view_servicios_x_sucursal` AS
 	Vista que muestra las transacciones en pesos realizadas en el mes actual, es decir, en estado "aplicado"; 
     mostrando información del servicio y del cliente.
 */  
-CREATE VIEW `view_txs_mes_actual_pesos` AS
+CREATE OR REPLACE VIEW `view_txs_mes_actual_pesos` AS
 	SELECT t.id_transaccion, 
 		   t.fecha AS fecha_transaccion,
 		   t.importe,
@@ -73,7 +73,7 @@ CREATE VIEW `view_txs_mes_actual_pesos` AS
 	Vista que muestra las transacciones en dólares realizadas en el mes actual, es decir, en estado "aplicado"; 
     mostrando información del servicio y del cliente.
 */ 
-CREATE VIEW `view_txs_mes_actual_dolar` AS
+CREATE OR REPLACE VIEW `view_txs_mes_actual_dolar` AS
 	SELECT t.id_transaccion, 
 		   t.fecha AS fecha_transaccion,
 		   t.importe,
@@ -106,7 +106,7 @@ CREATE VIEW `view_txs_mes_actual_dolar` AS
 	Vista que muestra las transacciones anuladas en el mes anterior al actual, 
     mostrando la moneda y la información del servicio y del cliente.
 */ 
-CREATE VIEW `view_txs_anuladas_mes_anterior` AS
+CREATE OR REPLACE VIEW `view_txs_anuladas_mes_anterior` AS
 	SELECT t.id_transaccion, 
 		   t.fecha AS fecha_transaccion,
            t.fecha_anulacion AS fecha_anulacion,
