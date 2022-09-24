@@ -1,4 +1,5 @@
 -- Creación tabla para almacenar auditoria de otras tablas
+DROP TABLE IF EXISTS log_auditoria;
 CREATE TABLE log_auditoria (
 	id_log INT NOT NULL AUTO_INCREMENT,
 	tabla VARCHAR(45) NOT NULL,
